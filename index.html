@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohit Kasarla - Security Engineer & AI Enthusiast </title>
+    <title>Rohit Kasarla - Security Engineer</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -274,6 +274,140 @@
             padding: 6rem 0;
         }
         
+        /* About Section */
+        .about {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .about-image-container {
+            position: relative;
+        }
+        
+        .about-image {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--accent-cyan);
+            box-shadow: 0 20px 60px rgba(34, 211, 238, 0.3);
+            position: relative;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border-radius: 20px;
+            z-index: -1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            object-position: center 40%;  /* Shows more of the top */
+        }
+        
+        .about-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(167, 139, 250, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .about-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .about-text p strong {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        
+        .stat-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-image {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
@@ -542,9 +676,10 @@
             return (
                 <nav>
                     <div className="container">
-                        <div className="logo">&lt;/Rohit Kasarla&gt;</div>
+                        <div className="logo">&lt;Rohit Kasarla&gt;</div>
                         <ul>
                             <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
                             <li><a href="#projects">Projects</a></li>
                             <li><a href="#blog">Blog</a></li>
                             <li><a href="#contact">Contact</a></li>
@@ -561,14 +696,70 @@
                     <div className="container">
                         <div className="hero-content">
                             <div className="hero-label">Security Engineer</div>
-                            <h1>Building Intelligent<br/>Security Solutions</h1>
+                            <h1>Curiosity Driven<br/>Lifelong Learner </h1>
                             <p>
-                                Leveraging artificial intelligence and machine learning to detect threats,
-                                secure systems, and build the future of cybersecurity.
+                                I enjoy leveraging artificial intelligence and machine learning to
+                                build and create secure systems.
                             </p>
                             <div className="cta-buttons">
                                 <a href="#projects" className="btn btn-primary">View Projects</a>
                                 <a href="#contact" className="btn btn-secondary">Get in Touch</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // About Component
+        function About() {
+            return (
+                <section className="about" id="about">
+                    <div className="container">
+                        <div className="section-header">
+                            <div className="section-label">Introduction </div>
+                            <h2 className="section-title">About Me</h2>
+                        </div>
+                        <div className="about-content">
+                            <div className="about-image-container">
+                                <div className="about-image">
+                                    <img src="image.PNG" alt="Rohit Kasarla" />   
+                                </div>
+                            </div>
+                            <div className="about-text">
+                                <h3>Hi, I'm Rohit Kasarla</h3>
+                                <p>
+                                    I’m someone who loves building things and learning how complex technologies
+                                    work. This website is where I share my journey through <strong>artificial intelligence, 
+                                    cybersecurity, and software projects</strong>. It’s a mix of hands-on experiments, 
+                                    write-ups, and reflections on what I’m learning as I go. Think of it as a living 
+                                    record of curiosity, problem-solving, and growth.
+                                </p>
+                                <p>
+                                    I began my path in security by earning degrees in Cybersecurity and Information Systems, 
+                                    building a foundation in both technical systems and business context. Professionally, I 
+                                    grew through security by moving from GRC to SecOps, then into DevSecOps, gaining experience
+                                    across risk, operations, and engineering. Today, I work as a Security Engineer, focused on 
+                                    building secure, scalable systems and continuously learning how security fits into modern development.
+                                </p>
+                                <p>
+                                    Outside of tech, I like staying active and competitive. When I’m not building 
+                                    projects or researching AI and security threats, you’ll usually find me working 
+                                    out, playing basketball, or on the golf course. Those outlets keep me balanced 
+                                    and remind me that progress—whether in tech or sports—comes from consistency and iteration.
+                                    I’m always learning, always refining my thinking, and always curious. This site reflects that mindset.
+                                </p>
+                                
+                                <div className="stats-grid">
+                                    <div className="stat-item">
+                                        <span className="stat-number">0</span>
+                                        <span className="stat-label">Projects</span>
+                                    </div>
+                                    <div className="stat-item">
+                                        <span className="stat-number">0</span>
+                                        <span className="stat-label">Blog Posts</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -630,7 +821,7 @@
                             <div className="section-label">Portfolio</div>
                             <h2 className="section-title">Featured Projects</h2>
                             <p className="section-description">
-                                A collection of AI-powered security tools and research projects
+                                A collection of projects utilizing AI and Security
                             </p>
                         </div>
                         <div className="projects-grid">
@@ -669,31 +860,7 @@
                     excerpt: 'A deep dive into creating neural networks that can detect malware with high accuracy...',
                     date: 'Jan 10, 2025',
                     link: '#'
-                },
-                {
-                    title: 'The Future of Cybersecurity: AI vs AI',
-                    excerpt: 'Understanding the emerging battlefield where AI defends against AI-powered attacks...',
-                    date: 'Jan 5, 2025',
-                    link: '#'
-                },
-                {
-                    title: 'Ethical Hacking with Machine Learning',
-                    excerpt: 'How to leverage ML techniques for penetration testing and vulnerability assessment...',
-                    date: 'Dec 28, 2024',
-                    link: '#'
-                },
-                {
-                    title: 'Network Security Anomaly Detection',
-                    excerpt: 'Implementing unsupervised learning for detecting unusual network behavior patterns...',
-                    date: 'Dec 20, 2024',
-                    link: '#'
-                },
-                {
-                    title: 'Securing AI Systems Against Adversarial Attacks',
-                    excerpt: 'Strategies to protect machine learning models from adversarial manipulation...',
-                    date: 'Dec 15, 2024',
-                    link: '#'
-                }
+                }    
             ];
 
             return (
@@ -731,15 +898,14 @@
                     <div className="container">
                         <div className="footer-content">
                             <div>
-                                <div className="logo">&lt;/Rohit Kasarla&gt;</div>
+                                <div className="logo">&lt;Rohit Kasarla&gt;</div>
                                 <p style={{color: 'var(--text-secondary)', marginTop: '1rem'}}>
-                                    AI Security Researcher & Developer
+                                    Security Engineer & AI Enthusiast
                                 </p>
                             </div>
                             <div className="social-links">
                                 <a href="https://github.com/rkasarla00" className="social-link" title="GitHub">💻</a>
                                 <a href="https://linkedin.com/in/rohit-kasarla" className="social-link" title="LinkedIn">💼</a>
-                                <a href="mailto:rkasarla00@gmail.com" className="social-link" title="Email">✉️</a>
                             </div>
                         </div>
                         <div style={{textAlign: 'center', marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid var(--border)'}}>
@@ -758,6 +924,7 @@
                 <>
                     <Navigation />
                     <Hero />
+                    <About />
                     <Projects />
                     <Blog />
                     <Footer />
